@@ -65,15 +65,7 @@ export default function LoginPage() {
           />
         </div>
 
-        <div className="checkbox-row">
-          <input
-            type="checkbox"
-            id="keepme"
-            checked={keepMe}
-            onChange={e => setKeepMe(e.target.checked)}
-          />
-          <label htmlFor="keepme">Keep me logged in</label>
-        </div>
+        
 
 {/* log in to welcome page */}
         <button type="submit" className="btn-primary" disabled={loading}>
