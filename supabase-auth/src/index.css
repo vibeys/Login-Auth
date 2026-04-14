@@ -1,0 +1,376 @@
+/* ── Reset ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── Base ──────────────────────────────────────────── */
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background-color: #f2f1ed;
+  color: #241c15;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: #007c6e;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+a:hover { text-decoration: underline; color: #005f54; }
+
+/* ── Page Shell ────────────────────────────────────── */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px 16px;
+}
+
+/* ── Top Logo ──────────────────────────────────────── */
+.auth-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #007c6e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.auth-logo:hover {
+  transform: scale(1.08);
+  box-shadow: 0 4px 12px rgba(0,124,110,0.25);
+}
+
+/* ── Card ──────────────────────────────────────────── */
+.auth-card {
+  background: #ffffff;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  padding: 40px 44px;
+  width: 100%;
+  max-width: 420px;
+  animation: fadeUp .35s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Headings ──────────────────────────────────────── */
+.auth-card h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #241c15;
+  margin-bottom: 6px;
+  letter-spacing: -.3px;
+}
+
+.auth-subtitle {
+  font-size: 13.5px;
+  color: #666;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+/* ── Form Fields ───────────────────────────────────── */
+.field { margin-bottom: 16px; }
+
+.field-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 9px 11px;
+  border: 1px solid #bbb;
+  border-radius: 3px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #241c15;
+  background: #fff;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s, background .2s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #007c6e;
+  box-shadow: 0 0 0 3px rgba(0,124,110,.15);
+  background: #fafffe;
+}
+
+/* ── Show/Hide password row ────────────────────────── */
+.show-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #007c6e;
+  font-size: 13px;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  transition: color 0.15s;
+}
+.show-btn:hover { color: #005f54; }
+
+/* ── Checkbox ──────────────────────────────────────── */
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.checkbox-row input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  accent-color: #007c6e;
+  cursor: pointer;
+}
+.checkbox-row label {
+  margin: 0;
+  font-weight: 400;
+  color: #555;
+  cursor: pointer;
+  font-size: 13.5px;
+}
+
+/* ── Primary Button ────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 24px;
+  background: #007c6e;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .15s, transform .1s, box-shadow .15s;
+  letter-spacing: .2px;
+}
+.btn-primary:hover {
+  background: #005f54;
+  box-shadow: 0 4px 14px rgba(0,124,110,0.25);
+  transform: translateY(-1px);
+}
+.btn-primary:active  { transform: scale(.98); box-shadow: none; }
+.btn-primary:disabled { opacity: .55; cursor: not-allowed; transform: none; box-shadow: none; }
+.btn-primary.full    { width: 100%; }
+
+/* ── Links row ─────────────────────────────────────── */
+.links-row {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.links-row a {
+  font-size: 13px;
+  color: #007c6e;
+  transition: color 0.15s;
+}
+
+/* ── Alert ─────────────────────────────────────────── */
+.alert {
+  padding: 11px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  margin-bottom: 16px;
+  line-height: 1.45;
+  animation: alertIn 0.25s ease both;
+}
+
+@keyframes alertIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.alert-error   { background: #fff0f0; border: 1px solid #f5c2c2; color: #c0392b; }
+.alert-success { background: #f0faf8; border: 1px solid #a8ddd5; color: #1a6b5e; }
+
+/* ── Step track ────────────────────────────────────── */
+.step-track {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 24px;
+}
+.step-dot {
+  height: 3px;
+  flex: 1;
+  border-radius: 2px;
+  background: #e0e0e0;
+  transition: background .4s ease;
+}
+.step-dot.active { background: #007c6e; }
+.step-dot.done   { background: #52b69a; }
+
+/* ── OTP Grid ──────────────────────────────────────── */
+.otp-grid {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin: 20px 0 24px;
+  width: 100%;
+}
+
+.otp-grid input {
+  flex: 1;
+  min-width: 0;
+  max-width: 42px;
+  height: 50px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  border: 2px solid #d1d5db;
+  border-radius: 8px;
+  background: #f9fafb;
+  color: #111827;
+  outline: none;
+  font-family: 'Courier New', monospace;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s, background 0.15s;
+  padding: 0;
+  width: 100% !important;
+}
+
+.otp-grid input:focus {
+  border-color: #007c6e;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(0,124,110,0.15);
+  transform: translateY(-2px);
+}
+
+.otp-grid.success input {
+  border-color: #22c55e;
+  background: #f0fdf4;
+  color: #16a34a;
+  box-shadow: 0 0 0 3px rgba(34,197,94,0.15);
+  animation: otp-pop 0.35s ease forwards;
+}
+
+.otp-grid.error input {
+  border-color: #ef4444;
+  background: #fef2f2;
+  color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(239,68,68,0.15);
+  animation: otp-shake 0.4s ease forwards;
+}
+
+@keyframes otp-pop {
+  0%   { transform: scale(1) translateY(0); }
+  40%  { transform: scale(1.08) translateY(-3px); }
+  100% { transform: scale(1) translateY(0); }
+}
+
+@keyframes otp-shake {
+  0%   { transform: translateX(0); }
+  20%  { transform: translateX(-7px); }
+  40%  { transform: translateX(7px); }
+  60%  { transform: translateX(-4px); }
+  80%  { transform: translateX(4px); }
+  100% { transform: translateX(0); }
+}
+
+/* ── Password strength ─────────────────────────────── */
+.strength-bars {
+  display: flex;
+  gap: 4px;
+  margin-top: 8px;
+}
+.strength-bar {
+  height: 3px;
+  flex: 1;
+  border-radius: 2px;
+  background: #e0e0e0;
+  transition: background .3s ease;
+}
+.strength-label {
+  font-size: 11.5px;
+  color: #888;
+  margin-top: 4px;
+  transition: color 0.3s;
+}
+
+/* ── Success icon ──────────────────────────────────── */
+.success-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #f0faf8;
+  border: 2px solid #007c6e;
+  color: #007c6e;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  animation: popIn 0.4s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.6); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.text-center { text-align: center; }
+
+/* ── Resend row ────────────────────────────────────── */
+.resend-row {
+  text-align: center;
+  margin-top: 14px;
+  font-size: 13px;
+  color: #888;
+}
+.resend-row button {
+  background: none;
+  border: none;
+  color: #007c6e;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 13px;
+  padding: 0;
+  transition: color 0.15s;
+}
+.resend-row button:hover { text-decoration: underline; color: #005f54; }
+
+/* ── Footer ────────────────────────────────────────── */
+.auth-footer {
+  font-size: 11.5px;
+  color: #aaa;
+  text-align: center;
+  margin-top: 16px;
+}
+
+/* ── Mismatch hint ─────────────────────────────────── */
+.hint-error {
+  font-size: 12px;
+  color: #c0392b;
+  margin-top: 4px;
+  animation: alertIn 0.2s ease both;
+}
